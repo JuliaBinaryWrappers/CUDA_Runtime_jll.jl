@@ -1,34 +1,17 @@
+using Libdl
+
+using CUDA_Driver
+
 using Base.BinaryPlatforms
 
-using Libdl
-using Base: thisminor
-
-
-#
-# Augmentation for selecting the CUDA toolkit
-#
-
-# NOTE: we set the 'cuda' platform tag to the actual CUDA Toolkit version we'll be using
-#       and not to the version that this driver supports (letting Pkg select an artifact
-#       via a comparison strategy). This to simplify dependent packages; otherwise they
-#       would need to know which toolkits are available to additionaly bound selection.
-
-# provided by caller: `augment_cuda_toolkit!(platform)` method calling the version below
-#                     with the available toolkit versions passed along
-
 function driver_version()
-    libcuda_path = if Sys.iswindows()
-        Libdl.find_library("nvcuda")
-    else
-        Libdl.find_library(["libcuda.so.1", "libcuda.so"])
-    end
-    if libcuda_path == ""
+    if libcuda() === nothing
         return nothing
     end
 
-    libcuda = Libdl.dlopen(libcuda_path)
+    libcuda_handle = Libdl.dlopen(libcuda())
     try
-        function_handle = Libdl.dlsym(libcuda, "cuDriverGetVersion")
+        function_handle = Libdl.dlsym(libcuda_handle, "cuDriverGetVersion")
         version_ref = Ref{Cint}()
         status = ccall(function_handle, UInt32, (Ptr{Cint},), version_ref)
         if status != 0
@@ -39,7 +22,7 @@ function driver_version()
         minor, patch = divrem(ver, 10)
         return VersionNumber(major, minor, patch)
     finally
-        Libdl.dlclose(libcuda)
+        Libdl.dlclose(libcuda_handle)
     end
 end
 
@@ -47,9 +30,17 @@ function toolkit_version(cuda_toolkits)
     cuda_driver = driver_version()
     if cuda_driver === nothing
         return nothing
+    elseif cuda_driver < v"11"
+        @error "CUDA driver 11+ is required (found $cuda_driver)."
+        return nothing
     end
 
     cuda_version_override = get(ENV, "JULIA_CUDA_VERSION", nothing)
+    if cuda_version_override === ""
+        return nothing
+    elseif cuda_version_override !== nothing
+        cuda_version_override = VersionNumber(cuda_version_override)
+    end
     # TODO: support for Preferences.jl-based override?
 
     # "[...] applications built against any of the older CUDA Toolkits always continued
@@ -57,16 +48,11 @@ function toolkit_version(cuda_toolkits)
     filter!(cuda_toolkits) do toolkit
         if cuda_version_override !== nothing
             toolkit == cuda_version_override
-        elseif cuda_driver >= v"11.1"
-            # enhanced compatibility
-            #
+        else
             # "From CUDA 11 onwards, applications compiled with a CUDA Toolkit release
             #  from within a CUDA major release family can run, with limited feature-set,
             #  on systems having at least the minimum required driver version"
-            # TODO: check this minimum required driver version?
             toolkit.major <= cuda_driver.major
-        else
-            thisminor(toolkit) <= thisminor(cuda_driver)
         end
     end
     if isempty(cuda_toolkits)
@@ -76,7 +62,8 @@ function toolkit_version(cuda_toolkits)
     last(cuda_toolkits)
 end
 
-function augment_cuda_toolkit!(platform::Platform, cuda_toolkits::Vector{VersionNumber})
+# versions will be provided by build_tarballs.jl
+function augment_platform!(platform::Platform, cuda_toolkits::Vector{VersionNumber})
     haskey(platform, "cuda") && return platform
 
     cuda_toolkit = toolkit_version(cuda_toolkits)
@@ -91,46 +78,6 @@ function augment_cuda_toolkit!(platform::Platform, cuda_toolkits::Vector{Version
 end
 
 
-#
-# Augmentation for selecting artifacts that depend on the CUDA toolkit
-#
-
-# imported by caller: CUDA_Runtime_jll
-
-function cuda_comparison_strategy(a::String, b::String, a_requested::Bool, b_requested::Bool)
-    a = VersionNumber(a)
-    b = VersionNumber(b)
-
-    # If both b and a requested, then we fall back to equality:
-    if a_requested && b_requested
-        return a == b
-    end
-
-    # Otherwise, do the comparison between the the single version cap and the single version:
-    function is_compatible(artifact::VersionNumber, host::VersionNumber)
-        if host >= v"11.0"
-            # enhanced compatibility, semver-style
-            artifact.major == host.major
-        else
-            artifact.major == host.major &&
-            artifact.minor == host.minor
-        end
-    end
-    if a_requested
-        is_compatible(b, a)
-    else
-        is_compatible(a, b)
-    end
-end
-
-function augment_cuda_dependent!(platform::Platform)
-    set_compare_strategy!(platform, "cuda", cuda_comparison_strategy)
-    haskey(platform, "cuda") && return platform
-    CUDA_Runtime_jll.augment_cuda_toolkit!(platform)
-end
-
-augment_cuda_toolkit!(platform) = augment_cuda_toolkit!(platform, VersionNumber[v"10.0.0", v"10.2.0", v"11.0.0", v"11.1.0", v"11.2.0", v"11.3.0", v"11.4.0", v"11.5.0", v"11.6.0"])
-
 function augment_platform!(platform::Platform)
-    augment_cuda_toolkit!(platform)
+    augment_platform!(platform, VersionNumber[v"11.0.0", v"11.1.0", v"11.2.0", v"11.3.0", v"11.4.0", v"11.5.0", v"11.6.0", v"11.7.0", v"11.8.0"])
 end
