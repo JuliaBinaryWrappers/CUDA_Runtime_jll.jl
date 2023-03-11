@@ -138,4 +138,4 @@ function augment_platform!(platform::Platform)
     return platform
 end
 
-const cuda_toolkits = VersionNumber[v"11.0.0", v"11.1.0", v"11.2.0", v"11.3.0", v"11.4.0", v"11.5.0", v"11.6.0", v"11.7.0", v"11.8.0", v"12.0.0"]
+const cuda_toolkits = VersionNumber[v"11.0.0", v"11.1.0", v"11.2.0", v"11.3.0", v"11.4.0", v"11.5.0", v"11.6.0", v"11.7.0", v"11.8.0", v"12.0.0", v"12.1.0"]

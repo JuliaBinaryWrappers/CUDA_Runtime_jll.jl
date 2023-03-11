@@ -6,14 +6,14 @@ JLLWrappers.@generate_wrapper_header("CUDA_Runtime")
 JLLWrappers.@declare_library_product(libcublas, "libcublas.so.11")
 JLLWrappers.@declare_library_product(libcublasLt, "libcublasLt.so.11")
 JLLWrappers.@declare_library_product(libcudart, "libcudart.so.11.0")
-JLLWrappers.@declare_library_product(libcufft, "libcufft.so.10")
 JLLWrappers.@declare_library_product(libcupti, "libcupti.so.11.8")
 JLLWrappers.@declare_library_product(libcurand, "libcurand.so.10")
 JLLWrappers.@declare_library_product(libcusolver, "libcusolver.so.11")
+JLLWrappers.@declare_library_product(libcusolverMg, "libcusolverMg.so.11")
 JLLWrappers.@declare_library_product(libcusparse, "libcusparse.so.11")
 JLLWrappers.@declare_executable_product(compute_sanitizer)
 JLLWrappers.@declare_file_product(libcudadevrt)
-JLLWrappers.@declare_library_product(libcusolverMg, "libcusolverMg.so.11")
+JLLWrappers.@declare_library_product(libcufft, "libcufft.so.10")
 JLLWrappers.@declare_file_product(libdevice)
 JLLWrappers.@declare_library_product(libnvPTXCompiler, "libnvPTXCompiler.so")
 JLLWrappers.@declare_library_product(libnvvm, "libnvvm.so.4")
@@ -41,12 +41,6 @@ function __init__()
     )
 
     JLLWrappers.@init_library_product(
-        libcufft,
-        "lib/libcufft.so",
-        RTLD_LAZY | RTLD_DEEPBIND,
-    )
-
-    JLLWrappers.@init_library_product(
         libcupti,
         "lib/libcupti.so",
         RTLD_LAZY | RTLD_DEEPBIND,
@@ -61,6 +55,12 @@ function __init__()
     JLLWrappers.@init_library_product(
         libcusolver,
         "lib/libcusolver.so",
+        RTLD_LAZY | RTLD_DEEPBIND,
+    )
+
+    JLLWrappers.@init_library_product(
+        libcusolverMg,
+        "lib/libcusolverMg.so",
         RTLD_LAZY | RTLD_DEEPBIND,
     )
 
@@ -81,8 +81,8 @@ function __init__()
     )
 
     JLLWrappers.@init_library_product(
-        libcusolverMg,
-        "lib/libcusolverMg.so",
+        libcufft,
+        "lib/libcufft.so",
         RTLD_LAZY | RTLD_DEEPBIND,
     )
 
