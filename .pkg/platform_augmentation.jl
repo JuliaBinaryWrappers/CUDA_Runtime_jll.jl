@@ -47,7 +47,7 @@ function cuda_toolkit_tag()
         cuda_driver = if CUDA_Driver_jll.is_available()
             @debug "Using CUDA_Driver_jll for driver discovery"
 
-            if !isdefined(CUDA_Driver_jll, :libcuda)
+            if isnothing(CUDA_Driver_jll.libcuda)
                 # no driver found
                 @debug "CUDA_Driver_jll reports no driver found"
                 return "none"
@@ -138,4 +138,4 @@ function augment_platform!(platform::Platform)
     return platform
 end
 
-const cuda_toolkits = VersionNumber[v"10.2.0", v"11.0.0", v"11.1.0", v"11.2.0", v"11.3.0", v"11.4.0", v"11.5.0", v"11.6.0", v"11.7.0", v"11.8.0"]
+const cuda_toolkits = VersionNumber[v"11.0.0", v"11.1.0", v"11.2.0", v"11.3.0", v"11.4.0", v"11.5.0", v"11.6.0", v"11.7.0", v"11.8.0", v"12.0.0", v"12.1.0"]
