@@ -112,7 +112,7 @@ function cuda_toolkit_tag()
     #  to function on newer drivers due to binary backward compatibility"
     filter!(cuda_toolkits) do toolkit
         if @isdefined(cuda_version_override)
-            toolkit == cuda_version_override
+            thisminor(toolkit) == thisminor(cuda_version_override)
         elseif cuda_driver_version >= v"11"
             # enhanced compatibility
             #
@@ -140,4 +140,4 @@ function augment_platform!(platform::Platform)
     return platform
 end
 
-const cuda_toolkits = VersionNumber[v"10.2.0", v"11.0.0", v"11.1.0", v"11.2.0", v"11.3.0", v"11.4.0", v"11.5.0", v"11.6.0", v"11.7.0", v"11.8.0"]
+const cuda_toolkits = VersionNumber[v"11.0.3", v"11.1.1", v"11.2.2", v"11.3.1", v"11.4.4", v"11.5.2", v"11.6.2", v"11.7.1", v"11.8.0", v"12.0.1", v"12.1.1", v"12.2.1"]
