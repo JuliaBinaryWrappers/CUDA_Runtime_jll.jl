@@ -14,7 +14,6 @@ JLLWrappers.@declare_library_product(libcusolverMg, "libcusolverMg.so.11")
 JLLWrappers.@declare_library_product(libcusparse, "libcusparse.so.12")
 JLLWrappers.@declare_file_product(libdevice)
 JLLWrappers.@declare_library_product(libnvJitLink, "libnvJitLink.so.12")
-JLLWrappers.@declare_library_product(libnvPTXCompiler, "libnvPTXCompiler.so")
 JLLWrappers.@declare_library_product(libnvperf_host, "libnvperf_host.so")
 JLLWrappers.@declare_library_product(libnvperf_target, "libnvperf_target.so")
 JLLWrappers.@declare_library_product(libnvrtc, "libnvrtc.so.12")
@@ -22,6 +21,7 @@ JLLWrappers.@declare_library_product(libnvrtc_builtins, "libnvrtc-builtins.so.12
 JLLWrappers.@declare_library_product(libnvvm, "libnvvm.so.4")
 JLLWrappers.@declare_executable_product(compute_sanitizer)
 JLLWrappers.@declare_file_product(libcudadevrt)
+JLLWrappers.@declare_library_product(libnvPTXCompiler, "libnvPTXCompiler.so")
 JLLWrappers.@declare_executable_product(nvdisasm)
 JLLWrappers.@declare_executable_product(nvlink)
 JLLWrappers.@declare_executable_product(ptxas)
@@ -93,12 +93,6 @@ function __init__()
     )
 
     JLLWrappers.@init_library_product(
-        libnvPTXCompiler,
-        "lib/libnvPTXCompiler.so",
-        RTLD_LAZY | RTLD_DEEPBIND,
-    )
-
-    JLLWrappers.@init_library_product(
         libnvperf_host,
         "lib/libnvperf_host.so",
         RTLD_LAZY | RTLD_DEEPBIND,
@@ -136,6 +130,12 @@ function __init__()
     JLLWrappers.@init_file_product(
         libcudadevrt,
         "lib/libcudadevrt.a",
+    )
+
+    JLLWrappers.@init_library_product(
+        libnvPTXCompiler,
+        "lib/libnvPTXCompiler.so",
+        RTLD_LAZY | RTLD_DEEPBIND,
     )
 
     JLLWrappers.@init_executable_product(
