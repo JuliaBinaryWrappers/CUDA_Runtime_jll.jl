@@ -5,8 +5,9 @@ using CUDA_Driver_jll
 JLLWrappers.@generate_wrapper_header("CUDA_Runtime")
 JLLWrappers.@declare_library_product(libcublas, "cublas64_12.dll")
 JLLWrappers.@declare_library_product(libcublasLt, "cublasLt64_12.dll")
-JLLWrappers.@declare_file_product(libcudadevrt)
 JLLWrappers.@declare_library_product(libcudart, "cudart64_12.dll")
+JLLWrappers.@declare_executable_product(compute_sanitizer)
+JLLWrappers.@declare_file_product(libcudadevrt)
 JLLWrappers.@declare_library_product(libcufft, "cufft64_11.dll")
 JLLWrappers.@declare_library_product(libcupti, "cupti64_2022.4.1.dll")
 JLLWrappers.@declare_library_product(libcurand, "curand64_10.dll")
@@ -20,7 +21,6 @@ JLLWrappers.@declare_library_product(libnvperf_target, "nvperf_target.dll")
 JLLWrappers.@declare_library_product(libnvrtc, "nvrtc64_120_0.dll")
 JLLWrappers.@declare_library_product(libnvrtc_builtins, "nvrtc-builtins64_120.dll")
 JLLWrappers.@declare_library_product(libnvvm, "nvvm64_40_0.dll")
-JLLWrappers.@declare_executable_product(compute_sanitizer)
 JLLWrappers.@declare_executable_product(nvdisasm)
 JLLWrappers.@declare_executable_product(nvlink)
 JLLWrappers.@declare_executable_product(ptxas)
@@ -38,15 +38,20 @@ function __init__()
         RTLD_LAZY | RTLD_DEEPBIND,
     )
 
-    JLLWrappers.@init_file_product(
-        libcudadevrt,
-        "lib\\cudadevrt.lib",
-    )
-
     JLLWrappers.@init_library_product(
         libcudart,
         "bin\\cudart64_12.dll",
         RTLD_LAZY | RTLD_DEEPBIND,
+    )
+
+    JLLWrappers.@init_executable_product(
+        compute_sanitizer,
+        "bin\\compute-sanitizer.exe",
+    )
+
+    JLLWrappers.@init_file_product(
+        libcudadevrt,
+        "lib\\cudadevrt.lib",
     )
 
     JLLWrappers.@init_library_product(
@@ -124,11 +129,6 @@ function __init__()
         libnvvm,
         "bin\\nvvm64_40_0.dll",
         RTLD_LAZY | RTLD_DEEPBIND,
-    )
-
-    JLLWrappers.@init_executable_product(
-        compute_sanitizer,
-        "bin\\compute-sanitizer.exe",
     )
 
     JLLWrappers.@init_executable_product(
