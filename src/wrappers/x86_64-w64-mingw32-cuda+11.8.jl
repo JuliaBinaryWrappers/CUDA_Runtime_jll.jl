@@ -5,21 +5,21 @@ using CUDA_Driver_jll
 JLLWrappers.@generate_wrapper_header("CUDA_Runtime")
 JLLWrappers.@declare_library_product(libcublas, "cublas64_11.dll")
 JLLWrappers.@declare_library_product(libcublasLt, "cublasLt64_11.dll")
-JLLWrappers.@declare_library_product(libcufft, "cufft64_10.dll")
-JLLWrappers.@declare_library_product(libcusolverMg, "cusolverMg64_11.dll")
-JLLWrappers.@declare_library_product(libnvrtc, "nvrtc64_112_0.dll")
-JLLWrappers.@declare_executable_product(compute_sanitizer)
 JLLWrappers.@declare_file_product(libcudadevrt)
 JLLWrappers.@declare_library_product(libcudart, "cudart64_110.dll")
+JLLWrappers.@declare_library_product(libcufft, "cufft64_10.dll")
 JLLWrappers.@declare_library_product(libcupti, "cupti64_2022.3.0.dll")
 JLLWrappers.@declare_library_product(libcurand, "curand64_10.dll")
 JLLWrappers.@declare_library_product(libcusolver, "cusolver64_11.dll")
+JLLWrappers.@declare_library_product(libcusolverMg, "cusolverMg64_11.dll")
 JLLWrappers.@declare_library_product(libcusparse, "cusparse64_11.dll")
 JLLWrappers.@declare_file_product(libdevice)
 JLLWrappers.@declare_library_product(libnvperf_host, "nvperf_host.dll")
 JLLWrappers.@declare_library_product(libnvperf_target, "nvperf_target.dll")
+JLLWrappers.@declare_library_product(libnvrtc, "nvrtc64_112_0.dll")
 JLLWrappers.@declare_library_product(libnvrtc_builtins, "nvrtc-builtins64_118.dll")
 JLLWrappers.@declare_library_product(libnvvm, "nvvm64_40_0.dll")
+JLLWrappers.@declare_executable_product(compute_sanitizer)
 JLLWrappers.@declare_executable_product(nvdisasm)
 JLLWrappers.@declare_executable_product(nvlink)
 JLLWrappers.@declare_executable_product(ptxas)
@@ -37,29 +37,6 @@ function __init__()
         RTLD_LAZY | RTLD_DEEPBIND,
     )
 
-    JLLWrappers.@init_library_product(
-        libcufft,
-        "bin\\cufft64_10.dll",
-        RTLD_LAZY | RTLD_DEEPBIND,
-    )
-
-    JLLWrappers.@init_library_product(
-        libcusolverMg,
-        "bin\\cusolverMg64_11.dll",
-        RTLD_LAZY | RTLD_DEEPBIND,
-    )
-
-    JLLWrappers.@init_library_product(
-        libnvrtc,
-        "bin\\nvrtc64_112_0.dll",
-        RTLD_LAZY | RTLD_DEEPBIND,
-    )
-
-    JLLWrappers.@init_executable_product(
-        compute_sanitizer,
-        "bin\\compute-sanitizer.exe",
-    )
-
     JLLWrappers.@init_file_product(
         libcudadevrt,
         "lib\\cudadevrt.lib",
@@ -68,6 +45,12 @@ function __init__()
     JLLWrappers.@init_library_product(
         libcudart,
         "bin\\cudart64_110.dll",
+        RTLD_LAZY | RTLD_DEEPBIND,
+    )
+
+    JLLWrappers.@init_library_product(
+        libcufft,
+        "bin\\cufft64_10.dll",
         RTLD_LAZY | RTLD_DEEPBIND,
     )
 
@@ -86,6 +69,12 @@ function __init__()
     JLLWrappers.@init_library_product(
         libcusolver,
         "bin\\cusolver64_11.dll",
+        RTLD_LAZY | RTLD_DEEPBIND,
+    )
+
+    JLLWrappers.@init_library_product(
+        libcusolverMg,
+        "bin\\cusolverMg64_11.dll",
         RTLD_LAZY | RTLD_DEEPBIND,
     )
 
@@ -113,6 +102,12 @@ function __init__()
     )
 
     JLLWrappers.@init_library_product(
+        libnvrtc,
+        "bin\\nvrtc64_112_0.dll",
+        RTLD_LAZY | RTLD_DEEPBIND,
+    )
+
+    JLLWrappers.@init_library_product(
         libnvrtc_builtins,
         "bin\\nvrtc-builtins64_118.dll",
         RTLD_LAZY | RTLD_DEEPBIND,
@@ -122,6 +117,11 @@ function __init__()
         libnvvm,
         "bin\\nvvm64_40_0.dll",
         RTLD_LAZY | RTLD_DEEPBIND,
+    )
+
+    JLLWrappers.@init_executable_product(
+        compute_sanitizer,
+        "bin\\compute-sanitizer.exe",
     )
 
     JLLWrappers.@init_executable_product(
