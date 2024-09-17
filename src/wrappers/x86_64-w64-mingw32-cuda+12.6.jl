@@ -8,7 +8,7 @@ JLLWrappers.@declare_library_product(libcublasLt, "cublasLt64_12.dll")
 JLLWrappers.@declare_file_product(libcudadevrt)
 JLLWrappers.@declare_library_product(libcudart, "cudart64_12.dll")
 JLLWrappers.@declare_library_product(libcufft, "cufft64_11.dll")
-JLLWrappers.@declare_library_product(libcupti, "cupti64_2024.3.0.dll")
+JLLWrappers.@declare_library_product(libcupti, "cupti64_2024.3.1.dll")
 JLLWrappers.@declare_library_product(libcurand, "curand64_10.dll")
 JLLWrappers.@declare_library_product(libcusolver, "cusolver64_11.dll")
 JLLWrappers.@declare_library_product(libcusolverMg, "cusolverMg64_11.dll")
@@ -55,7 +55,7 @@ function __init__()
 
     JLLWrappers.@init_library_product(
         libcupti,
-        "bin\\cupti64_2024.3.0.dll",
+        "bin\\cupti64_2024.3.1.dll",
         RTLD_LAZY | RTLD_DEEPBIND,
     )
 
