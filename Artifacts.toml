@@ -8,7 +8,7 @@ os = "linux"
 
     [[CUDA_Runtime.download]]
     sha256 = "a9d060841f2b88900ce71e49bfb02806ca900c18bfd3e3cba4fd035b851aaf6d"
-    url = "https://github.com/JuliaBinaryWrappers/CUDA_Runtime_jll.jl/releases/download/CUDA_Runtime-v0.17.0+0/CUDA_Runtime.v0.17.0.x86_64-linux-gnu-cuda+10.2.tar.gz"
+    url = "https://github.com/JuliaBinaryWrappers/CUDA_Runtime_jll.jl/releases/download/CUDA_Runtime-v0.17.1+0/CUDA_Runtime.v0.17.1.x86_64-linux-gnu-cuda+10.2.tar.gz"
 [[CUDA_Runtime]]
 arch = "aarch64"
 cuda = "10.2"
@@ -20,7 +20,7 @@ os = "linux"
 
     [[CUDA_Runtime.download]]
     sha256 = "acc32ff3a2b64a30e1e0cd46c2f1660feb7341daa9f343ed913591e500add3a0"
-    url = "https://github.com/JuliaBinaryWrappers/CUDA_Runtime_jll.jl/releases/download/CUDA_Runtime-v0.17.0+0/CUDA_Runtime.v0.17.0.aarch64-linux-gnu-cuda_platform+jetson-cuda+10.2.tar.gz"
+    url = "https://github.com/JuliaBinaryWrappers/CUDA_Runtime_jll.jl/releases/download/CUDA_Runtime-v0.17.1+0/CUDA_Runtime.v0.17.1.aarch64-linux-gnu-cuda_platform+jetson-cuda+10.2.tar.gz"
 [[CUDA_Runtime]]
 arch = "x86_64"
 cuda = "10.2"
@@ -30,7 +30,7 @@ os = "windows"
 
     [[CUDA_Runtime.download]]
     sha256 = "08ddffa4854dca08808b8fc3818581a246d6234f912d48dad32ab4dcd2da4a51"
-    url = "https://github.com/JuliaBinaryWrappers/CUDA_Runtime_jll.jl/releases/download/CUDA_Runtime-v0.17.0+0/CUDA_Runtime.v0.17.0.x86_64-w64-mingw32-cuda+10.2.tar.gz"
+    url = "https://github.com/JuliaBinaryWrappers/CUDA_Runtime_jll.jl/releases/download/CUDA_Runtime-v0.17.1+0/CUDA_Runtime.v0.17.1.x86_64-w64-mingw32-cuda+10.2.tar.gz"
 [[CUDA_Runtime]]
 arch = "x86_64"
 cuda = "11.4"
@@ -41,7 +41,7 @@ os = "linux"
 
     [[CUDA_Runtime.download]]
     sha256 = "8e03c4f4dfc1aedd3ca819a3e7a132572c3f2b6efe9940e7e7dd718ccb0d5803"
-    url = "https://github.com/JuliaBinaryWrappers/CUDA_Runtime_jll.jl/releases/download/CUDA_Runtime-v0.17.0+0/CUDA_Runtime.v0.17.0.x86_64-linux-gnu-cuda+11.4.tar.gz"
+    url = "https://github.com/JuliaBinaryWrappers/CUDA_Runtime_jll.jl/releases/download/CUDA_Runtime-v0.17.1+0/CUDA_Runtime.v0.17.1.x86_64-linux-gnu-cuda+11.4.tar.gz"
 [[CUDA_Runtime]]
 arch = "aarch64"
 cuda = "11.4"
@@ -53,7 +53,7 @@ os = "linux"
 
     [[CUDA_Runtime.download]]
     sha256 = "d6c0a9e5f123c628de39c7f1770060e80aecc74f8367e3593e3f880fb12541c0"
-    url = "https://github.com/JuliaBinaryWrappers/CUDA_Runtime_jll.jl/releases/download/CUDA_Runtime-v0.17.0+0/CUDA_Runtime.v0.17.0.aarch64-linux-gnu-cuda_platform+sbsa-cuda+11.4.tar.gz"
+    url = "https://github.com/JuliaBinaryWrappers/CUDA_Runtime_jll.jl/releases/download/CUDA_Runtime-v0.17.1+0/CUDA_Runtime.v0.17.1.aarch64-linux-gnu-cuda_platform+sbsa-cuda+11.4.tar.gz"
 [[CUDA_Runtime]]
 arch = "x86_64"
 cuda = "11.4"
@@ -63,7 +63,7 @@ os = "windows"
 
     [[CUDA_Runtime.download]]
     sha256 = "b572747ffd0d2636e76a831afc7ad8a925b96eb7e075f14a823fd0184bc1ab50"
-    url = "https://github.com/JuliaBinaryWrappers/CUDA_Runtime_jll.jl/releases/download/CUDA_Runtime-v0.17.0+0/CUDA_Runtime.v0.17.0.x86_64-w64-mingw32-cuda+11.4.tar.gz"
+    url = "https://github.com/JuliaBinaryWrappers/CUDA_Runtime_jll.jl/releases/download/CUDA_Runtime-v0.17.1+0/CUDA_Runtime.v0.17.1.x86_64-w64-mingw32-cuda+11.4.tar.gz"
 [[CUDA_Runtime]]
 arch = "x86_64"
 cuda = "11.5"
@@ -74,7 +74,7 @@ os = "linux"
 
     [[CUDA_Runtime.download]]
     sha256 = "c6e27ecb1c7d4262e8875da9abf6542b333706547c7933bcccaf6d6facd6da98"
-    url = "https://github.com/JuliaBinaryWrappers/CUDA_Runtime_jll.jl/releases/download/CUDA_Runtime-v0.17.0+0/CUDA_Runtime.v0.17.0.x86_64-linux-gnu-cuda+11.5.tar.gz"
+    url = "https://github.com/JuliaBinaryWrappers/CUDA_Runtime_jll.jl/releases/download/CUDA_Runtime-v0.17.1+0/CUDA_Runtime.v0.17.1.x86_64-linux-gnu-cuda+11.5.tar.gz"
 [[CUDA_Runtime]]
 arch = "aarch64"
 cuda = "11.5"
@@ -86,7 +86,7 @@ os = "linux"
 
     [[CUDA_Runtime.download]]
     sha256 = "8c8efaeb236732213f91a461741e552b75be194033af42bd12234b8399df0c93"
-    url = "https://github.com/JuliaBinaryWrappers/CUDA_Runtime_jll.jl/releases/download/CUDA_Runtime-v0.17.0+0/CUDA_Runtime.v0.17.0.aarch64-linux-gnu-cuda_platform+sbsa-cuda+11.5.tar.gz"
+    url = "https://github.com/JuliaBinaryWrappers/CUDA_Runtime_jll.jl/releases/download/CUDA_Runtime-v0.17.1+0/CUDA_Runtime.v0.17.1.aarch64-linux-gnu-cuda_platform+sbsa-cuda+11.5.tar.gz"
 [[CUDA_Runtime]]
 arch = "x86_64"
 cuda = "11.5"
@@ -96,7 +96,7 @@ os = "windows"
 
     [[CUDA_Runtime.download]]
     sha256 = "519f7ec6832a4c58758c5f6ac2ffa1575374ef15db7fa4af9a7f3657ec423f02"
-    url = "https://github.com/JuliaBinaryWrappers/CUDA_Runtime_jll.jl/releases/download/CUDA_Runtime-v0.17.0+0/CUDA_Runtime.v0.17.0.x86_64-w64-mingw32-cuda+11.5.tar.gz"
+    url = "https://github.com/JuliaBinaryWrappers/CUDA_Runtime_jll.jl/releases/download/CUDA_Runtime-v0.17.1+0/CUDA_Runtime.v0.17.1.x86_64-w64-mingw32-cuda+11.5.tar.gz"
 [[CUDA_Runtime]]
 arch = "x86_64"
 cuda = "11.6"
@@ -107,7 +107,7 @@ os = "linux"
 
     [[CUDA_Runtime.download]]
     sha256 = "8d3ea1501d0a49568748c734f93de1806e1b262f87f01941f424dd9c0261d779"
-    url = "https://github.com/JuliaBinaryWrappers/CUDA_Runtime_jll.jl/releases/download/CUDA_Runtime-v0.17.0+0/CUDA_Runtime.v0.17.0.x86_64-linux-gnu-cuda+11.6.tar.gz"
+    url = "https://github.com/JuliaBinaryWrappers/CUDA_Runtime_jll.jl/releases/download/CUDA_Runtime-v0.17.1+0/CUDA_Runtime.v0.17.1.x86_64-linux-gnu-cuda+11.6.tar.gz"
 [[CUDA_Runtime]]
 arch = "aarch64"
 cuda = "11.6"
@@ -119,7 +119,7 @@ os = "linux"
 
     [[CUDA_Runtime.download]]
     sha256 = "adfe2176210e122c41766dfbe08b851fad9c039638184d323ca1a299e430a013"
-    url = "https://github.com/JuliaBinaryWrappers/CUDA_Runtime_jll.jl/releases/download/CUDA_Runtime-v0.17.0+0/CUDA_Runtime.v0.17.0.aarch64-linux-gnu-cuda_platform+sbsa-cuda+11.6.tar.gz"
+    url = "https://github.com/JuliaBinaryWrappers/CUDA_Runtime_jll.jl/releases/download/CUDA_Runtime-v0.17.1+0/CUDA_Runtime.v0.17.1.aarch64-linux-gnu-cuda_platform+sbsa-cuda+11.6.tar.gz"
 [[CUDA_Runtime]]
 arch = "x86_64"
 cuda = "11.6"
@@ -129,7 +129,7 @@ os = "windows"
 
     [[CUDA_Runtime.download]]
     sha256 = "99afd07e9deb708f7356ce182780f335d10743374765187014cd64184766a787"
-    url = "https://github.com/JuliaBinaryWrappers/CUDA_Runtime_jll.jl/releases/download/CUDA_Runtime-v0.17.0+0/CUDA_Runtime.v0.17.0.x86_64-w64-mingw32-cuda+11.6.tar.gz"
+    url = "https://github.com/JuliaBinaryWrappers/CUDA_Runtime_jll.jl/releases/download/CUDA_Runtime-v0.17.1+0/CUDA_Runtime.v0.17.1.x86_64-w64-mingw32-cuda+11.6.tar.gz"
 [[CUDA_Runtime]]
 arch = "x86_64"
 cuda = "11.7"
@@ -140,7 +140,7 @@ os = "linux"
 
     [[CUDA_Runtime.download]]
     sha256 = "d76d6383b0f768ac09eae36a86a86708962cc3ea96e12d2d1d02b97051dfd5f8"
-    url = "https://github.com/JuliaBinaryWrappers/CUDA_Runtime_jll.jl/releases/download/CUDA_Runtime-v0.17.0+0/CUDA_Runtime.v0.17.0.x86_64-linux-gnu-cuda+11.7.tar.gz"
+    url = "https://github.com/JuliaBinaryWrappers/CUDA_Runtime_jll.jl/releases/download/CUDA_Runtime-v0.17.1+0/CUDA_Runtime.v0.17.1.x86_64-linux-gnu-cuda+11.7.tar.gz"
 [[CUDA_Runtime]]
 arch = "aarch64"
 cuda = "11.7"
@@ -152,7 +152,7 @@ os = "linux"
 
     [[CUDA_Runtime.download]]
     sha256 = "df9c46fd7f3ae8aac2dd6759f3f06d9b5c1eb74f9f83d6f1a6778938e38967b6"
-    url = "https://github.com/JuliaBinaryWrappers/CUDA_Runtime_jll.jl/releases/download/CUDA_Runtime-v0.17.0+0/CUDA_Runtime.v0.17.0.aarch64-linux-gnu-cuda_platform+sbsa-cuda+11.7.tar.gz"
+    url = "https://github.com/JuliaBinaryWrappers/CUDA_Runtime_jll.jl/releases/download/CUDA_Runtime-v0.17.1+0/CUDA_Runtime.v0.17.1.aarch64-linux-gnu-cuda_platform+sbsa-cuda+11.7.tar.gz"
 [[CUDA_Runtime]]
 arch = "x86_64"
 cuda = "11.7"
@@ -162,7 +162,7 @@ os = "windows"
 
     [[CUDA_Runtime.download]]
     sha256 = "dd1e72dc4d7b29fcd2a044b23badfef87a59d72c0e2e8d62ee7287af283e8ca2"
-    url = "https://github.com/JuliaBinaryWrappers/CUDA_Runtime_jll.jl/releases/download/CUDA_Runtime-v0.17.0+0/CUDA_Runtime.v0.17.0.x86_64-w64-mingw32-cuda+11.7.tar.gz"
+    url = "https://github.com/JuliaBinaryWrappers/CUDA_Runtime_jll.jl/releases/download/CUDA_Runtime-v0.17.1+0/CUDA_Runtime.v0.17.1.x86_64-w64-mingw32-cuda+11.7.tar.gz"
 [[CUDA_Runtime]]
 arch = "x86_64"
 cuda = "11.8"
@@ -173,7 +173,7 @@ os = "linux"
 
     [[CUDA_Runtime.download]]
     sha256 = "fe82535c86b0ad2f3e135557185c67b305db435e4a23087a492f511ff05a2932"
-    url = "https://github.com/JuliaBinaryWrappers/CUDA_Runtime_jll.jl/releases/download/CUDA_Runtime-v0.17.0+0/CUDA_Runtime.v0.17.0.x86_64-linux-gnu-cuda+11.8.tar.gz"
+    url = "https://github.com/JuliaBinaryWrappers/CUDA_Runtime_jll.jl/releases/download/CUDA_Runtime-v0.17.1+0/CUDA_Runtime.v0.17.1.x86_64-linux-gnu-cuda+11.8.tar.gz"
 [[CUDA_Runtime]]
 arch = "aarch64"
 cuda = "11.8"
@@ -185,7 +185,7 @@ os = "linux"
 
     [[CUDA_Runtime.download]]
     sha256 = "9489480111a1f888647b369298b8b602058ed89ebdd02add442425fa31b3823f"
-    url = "https://github.com/JuliaBinaryWrappers/CUDA_Runtime_jll.jl/releases/download/CUDA_Runtime-v0.17.0+0/CUDA_Runtime.v0.17.0.aarch64-linux-gnu-cuda_platform+jetson-cuda+11.8.tar.gz"
+    url = "https://github.com/JuliaBinaryWrappers/CUDA_Runtime_jll.jl/releases/download/CUDA_Runtime-v0.17.1+0/CUDA_Runtime.v0.17.1.aarch64-linux-gnu-cuda_platform+jetson-cuda+11.8.tar.gz"
 [[CUDA_Runtime]]
 arch = "aarch64"
 cuda = "11.8"
@@ -197,7 +197,7 @@ os = "linux"
 
     [[CUDA_Runtime.download]]
     sha256 = "47b724bed5125b29b04c9a7f242c99efbc011c98435fadef2dea51331c329019"
-    url = "https://github.com/JuliaBinaryWrappers/CUDA_Runtime_jll.jl/releases/download/CUDA_Runtime-v0.17.0+0/CUDA_Runtime.v0.17.0.aarch64-linux-gnu-cuda_platform+sbsa-cuda+11.8.tar.gz"
+    url = "https://github.com/JuliaBinaryWrappers/CUDA_Runtime_jll.jl/releases/download/CUDA_Runtime-v0.17.1+0/CUDA_Runtime.v0.17.1.aarch64-linux-gnu-cuda_platform+sbsa-cuda+11.8.tar.gz"
 [[CUDA_Runtime]]
 arch = "x86_64"
 cuda = "11.8"
@@ -207,7 +207,7 @@ os = "windows"
 
     [[CUDA_Runtime.download]]
     sha256 = "e58fb1ed17f15743d8350abb9048ae457382974454c0095216f07da33ccca984"
-    url = "https://github.com/JuliaBinaryWrappers/CUDA_Runtime_jll.jl/releases/download/CUDA_Runtime-v0.17.0+0/CUDA_Runtime.v0.17.0.x86_64-w64-mingw32-cuda+11.8.tar.gz"
+    url = "https://github.com/JuliaBinaryWrappers/CUDA_Runtime_jll.jl/releases/download/CUDA_Runtime-v0.17.1+0/CUDA_Runtime.v0.17.1.x86_64-w64-mingw32-cuda+11.8.tar.gz"
 [[CUDA_Runtime]]
 arch = "x86_64"
 cuda = "12.0"
@@ -218,7 +218,7 @@ os = "linux"
 
     [[CUDA_Runtime.download]]
     sha256 = "f3fdf8221ffbf6a86def5e78831a71cde78324aee67c56a06d9c02d5c5d5d93f"
-    url = "https://github.com/JuliaBinaryWrappers/CUDA_Runtime_jll.jl/releases/download/CUDA_Runtime-v0.17.0+0/CUDA_Runtime.v0.17.0.x86_64-linux-gnu-cuda+12.0.tar.gz"
+    url = "https://github.com/JuliaBinaryWrappers/CUDA_Runtime_jll.jl/releases/download/CUDA_Runtime-v0.17.1+0/CUDA_Runtime.v0.17.1.x86_64-linux-gnu-cuda+12.0.tar.gz"
 [[CUDA_Runtime]]
 arch = "aarch64"
 cuda = "12.0"
@@ -230,7 +230,7 @@ os = "linux"
 
     [[CUDA_Runtime.download]]
     sha256 = "9c5c1b0403cdb91b0e806bfde34770f6d06ba6f2f684a4c0f35c3623970c1e05"
-    url = "https://github.com/JuliaBinaryWrappers/CUDA_Runtime_jll.jl/releases/download/CUDA_Runtime-v0.17.0+0/CUDA_Runtime.v0.17.0.aarch64-linux-gnu-cuda_platform+jetson-cuda+12.0.tar.gz"
+    url = "https://github.com/JuliaBinaryWrappers/CUDA_Runtime_jll.jl/releases/download/CUDA_Runtime-v0.17.1+0/CUDA_Runtime.v0.17.1.aarch64-linux-gnu-cuda_platform+jetson-cuda+12.0.tar.gz"
 [[CUDA_Runtime]]
 arch = "aarch64"
 cuda = "12.0"
@@ -242,7 +242,7 @@ os = "linux"
 
     [[CUDA_Runtime.download]]
     sha256 = "c6e5c875aa669b6fe6a5461aa3d2511e37ccae2eb019df89d0c43a8ed25045d4"
-    url = "https://github.com/JuliaBinaryWrappers/CUDA_Runtime_jll.jl/releases/download/CUDA_Runtime-v0.17.0+0/CUDA_Runtime.v0.17.0.aarch64-linux-gnu-cuda_platform+sbsa-cuda+12.0.tar.gz"
+    url = "https://github.com/JuliaBinaryWrappers/CUDA_Runtime_jll.jl/releases/download/CUDA_Runtime-v0.17.1+0/CUDA_Runtime.v0.17.1.aarch64-linux-gnu-cuda_platform+sbsa-cuda+12.0.tar.gz"
 [[CUDA_Runtime]]
 arch = "x86_64"
 cuda = "12.0"
@@ -252,7 +252,7 @@ os = "windows"
 
     [[CUDA_Runtime.download]]
     sha256 = "076582ddf5f9e5c820103c5b706004c45c7a3973fbb0664ed4a691830ed633b8"
-    url = "https://github.com/JuliaBinaryWrappers/CUDA_Runtime_jll.jl/releases/download/CUDA_Runtime-v0.17.0+0/CUDA_Runtime.v0.17.0.x86_64-w64-mingw32-cuda+12.0.tar.gz"
+    url = "https://github.com/JuliaBinaryWrappers/CUDA_Runtime_jll.jl/releases/download/CUDA_Runtime-v0.17.1+0/CUDA_Runtime.v0.17.1.x86_64-w64-mingw32-cuda+12.0.tar.gz"
 [[CUDA_Runtime]]
 arch = "x86_64"
 cuda = "12.1"
@@ -263,7 +263,7 @@ os = "linux"
 
     [[CUDA_Runtime.download]]
     sha256 = "ea896c285f86223b8131f155e83fb7aab11505a143896d4b47a2ed43b1d6fa55"
-    url = "https://github.com/JuliaBinaryWrappers/CUDA_Runtime_jll.jl/releases/download/CUDA_Runtime-v0.17.0+0/CUDA_Runtime.v0.17.0.x86_64-linux-gnu-cuda+12.1.tar.gz"
+    url = "https://github.com/JuliaBinaryWrappers/CUDA_Runtime_jll.jl/releases/download/CUDA_Runtime-v0.17.1+0/CUDA_Runtime.v0.17.1.x86_64-linux-gnu-cuda+12.1.tar.gz"
 [[CUDA_Runtime]]
 arch = "aarch64"
 cuda = "12.1"
@@ -275,7 +275,7 @@ os = "linux"
 
     [[CUDA_Runtime.download]]
     sha256 = "18d548fc0b61e220d37e489d63cb3058a65c1241aeed2965e16f51de0897ce32"
-    url = "https://github.com/JuliaBinaryWrappers/CUDA_Runtime_jll.jl/releases/download/CUDA_Runtime-v0.17.0+0/CUDA_Runtime.v0.17.0.aarch64-linux-gnu-cuda_platform+jetson-cuda+12.1.tar.gz"
+    url = "https://github.com/JuliaBinaryWrappers/CUDA_Runtime_jll.jl/releases/download/CUDA_Runtime-v0.17.1+0/CUDA_Runtime.v0.17.1.aarch64-linux-gnu-cuda_platform+jetson-cuda+12.1.tar.gz"
 [[CUDA_Runtime]]
 arch = "aarch64"
 cuda = "12.1"
@@ -287,7 +287,7 @@ os = "linux"
 
     [[CUDA_Runtime.download]]
     sha256 = "8292fefceaa77474bdd0f921284fdf83e11b3c8e9f2396b9a9f4d930eae9fb35"
-    url = "https://github.com/JuliaBinaryWrappers/CUDA_Runtime_jll.jl/releases/download/CUDA_Runtime-v0.17.0+0/CUDA_Runtime.v0.17.0.aarch64-linux-gnu-cuda_platform+sbsa-cuda+12.1.tar.gz"
+    url = "https://github.com/JuliaBinaryWrappers/CUDA_Runtime_jll.jl/releases/download/CUDA_Runtime-v0.17.1+0/CUDA_Runtime.v0.17.1.aarch64-linux-gnu-cuda_platform+sbsa-cuda+12.1.tar.gz"
 [[CUDA_Runtime]]
 arch = "x86_64"
 cuda = "12.1"
@@ -297,7 +297,7 @@ os = "windows"
 
     [[CUDA_Runtime.download]]
     sha256 = "f488ee4261ce80b9313bafaa02c533381c6d20f34a0d62f32f144ddc2644b582"
-    url = "https://github.com/JuliaBinaryWrappers/CUDA_Runtime_jll.jl/releases/download/CUDA_Runtime-v0.17.0+0/CUDA_Runtime.v0.17.0.x86_64-w64-mingw32-cuda+12.1.tar.gz"
+    url = "https://github.com/JuliaBinaryWrappers/CUDA_Runtime_jll.jl/releases/download/CUDA_Runtime-v0.17.1+0/CUDA_Runtime.v0.17.1.x86_64-w64-mingw32-cuda+12.1.tar.gz"
 [[CUDA_Runtime]]
 arch = "x86_64"
 cuda = "12.2"
@@ -308,7 +308,7 @@ os = "linux"
 
     [[CUDA_Runtime.download]]
     sha256 = "05742abbaf3552320d8182806ec26c9ac2aaf5ee6e5640a7f00553b69550aa29"
-    url = "https://github.com/JuliaBinaryWrappers/CUDA_Runtime_jll.jl/releases/download/CUDA_Runtime-v0.17.0+0/CUDA_Runtime.v0.17.0.x86_64-linux-gnu-cuda+12.2.tar.gz"
+    url = "https://github.com/JuliaBinaryWrappers/CUDA_Runtime_jll.jl/releases/download/CUDA_Runtime-v0.17.1+0/CUDA_Runtime.v0.17.1.x86_64-linux-gnu-cuda+12.2.tar.gz"
 [[CUDA_Runtime]]
 arch = "aarch64"
 cuda = "12.2"
@@ -320,7 +320,7 @@ os = "linux"
 
     [[CUDA_Runtime.download]]
     sha256 = "e0fbaddc2ee14bd2dc8b4ff554c86912360a41a285b120b299eb6b24e897ede0"
-    url = "https://github.com/JuliaBinaryWrappers/CUDA_Runtime_jll.jl/releases/download/CUDA_Runtime-v0.17.0+0/CUDA_Runtime.v0.17.0.aarch64-linux-gnu-cuda_platform+jetson-cuda+12.2.tar.gz"
+    url = "https://github.com/JuliaBinaryWrappers/CUDA_Runtime_jll.jl/releases/download/CUDA_Runtime-v0.17.1+0/CUDA_Runtime.v0.17.1.aarch64-linux-gnu-cuda_platform+jetson-cuda+12.2.tar.gz"
 [[CUDA_Runtime]]
 arch = "aarch64"
 cuda = "12.2"
@@ -332,7 +332,7 @@ os = "linux"
 
     [[CUDA_Runtime.download]]
     sha256 = "4e6ccd49595e84eb39b6fca396869d2db5ab1f198ef5478fb89fbaeac764bd8c"
-    url = "https://github.com/JuliaBinaryWrappers/CUDA_Runtime_jll.jl/releases/download/CUDA_Runtime-v0.17.0+0/CUDA_Runtime.v0.17.0.aarch64-linux-gnu-cuda_platform+sbsa-cuda+12.2.tar.gz"
+    url = "https://github.com/JuliaBinaryWrappers/CUDA_Runtime_jll.jl/releases/download/CUDA_Runtime-v0.17.1+0/CUDA_Runtime.v0.17.1.aarch64-linux-gnu-cuda_platform+sbsa-cuda+12.2.tar.gz"
 [[CUDA_Runtime]]
 arch = "x86_64"
 cuda = "12.2"
@@ -342,7 +342,7 @@ os = "windows"
 
     [[CUDA_Runtime.download]]
     sha256 = "655be154c11c21a9a9a849358145521c606f692cd8124980bfa1c39a5aa98414"
-    url = "https://github.com/JuliaBinaryWrappers/CUDA_Runtime_jll.jl/releases/download/CUDA_Runtime-v0.17.0+0/CUDA_Runtime.v0.17.0.x86_64-w64-mingw32-cuda+12.2.tar.gz"
+    url = "https://github.com/JuliaBinaryWrappers/CUDA_Runtime_jll.jl/releases/download/CUDA_Runtime-v0.17.1+0/CUDA_Runtime.v0.17.1.x86_64-w64-mingw32-cuda+12.2.tar.gz"
 [[CUDA_Runtime]]
 arch = "x86_64"
 cuda = "12.3"
@@ -353,7 +353,7 @@ os = "linux"
 
     [[CUDA_Runtime.download]]
     sha256 = "18c594f4878292d014e4fd42412e551580797bb63fa522ec2eb08c2334516bfd"
-    url = "https://github.com/JuliaBinaryWrappers/CUDA_Runtime_jll.jl/releases/download/CUDA_Runtime-v0.17.0+0/CUDA_Runtime.v0.17.0.x86_64-linux-gnu-cuda+12.3.tar.gz"
+    url = "https://github.com/JuliaBinaryWrappers/CUDA_Runtime_jll.jl/releases/download/CUDA_Runtime-v0.17.1+0/CUDA_Runtime.v0.17.1.x86_64-linux-gnu-cuda+12.3.tar.gz"
 [[CUDA_Runtime]]
 arch = "aarch64"
 cuda = "12.3"
@@ -365,7 +365,7 @@ os = "linux"
 
     [[CUDA_Runtime.download]]
     sha256 = "cfbd1fe089cb33326cc0aef65131700db501bffabc89cee04cd305937e9328a9"
-    url = "https://github.com/JuliaBinaryWrappers/CUDA_Runtime_jll.jl/releases/download/CUDA_Runtime-v0.17.0+0/CUDA_Runtime.v0.17.0.aarch64-linux-gnu-cuda_platform+sbsa-cuda+12.3.tar.gz"
+    url = "https://github.com/JuliaBinaryWrappers/CUDA_Runtime_jll.jl/releases/download/CUDA_Runtime-v0.17.1+0/CUDA_Runtime.v0.17.1.aarch64-linux-gnu-cuda_platform+sbsa-cuda+12.3.tar.gz"
 [[CUDA_Runtime]]
 arch = "x86_64"
 cuda = "12.3"
@@ -375,7 +375,7 @@ os = "windows"
 
     [[CUDA_Runtime.download]]
     sha256 = "f5edcd9b58d4ed6f20bd18cbd8783dcb477a9eb58f1316244799f160ad6a91ae"
-    url = "https://github.com/JuliaBinaryWrappers/CUDA_Runtime_jll.jl/releases/download/CUDA_Runtime-v0.17.0+0/CUDA_Runtime.v0.17.0.x86_64-w64-mingw32-cuda+12.3.tar.gz"
+    url = "https://github.com/JuliaBinaryWrappers/CUDA_Runtime_jll.jl/releases/download/CUDA_Runtime-v0.17.1+0/CUDA_Runtime.v0.17.1.x86_64-w64-mingw32-cuda+12.3.tar.gz"
 [[CUDA_Runtime]]
 arch = "x86_64"
 cuda = "12.4"
@@ -386,7 +386,7 @@ os = "linux"
 
     [[CUDA_Runtime.download]]
     sha256 = "150031233aacd0b2163e2cf94122e9d310a7e4d5e347a01ffa1f61a0a7e1918e"
-    url = "https://github.com/JuliaBinaryWrappers/CUDA_Runtime_jll.jl/releases/download/CUDA_Runtime-v0.17.0+0/CUDA_Runtime.v0.17.0.x86_64-linux-gnu-cuda+12.4.tar.gz"
+    url = "https://github.com/JuliaBinaryWrappers/CUDA_Runtime_jll.jl/releases/download/CUDA_Runtime-v0.17.1+0/CUDA_Runtime.v0.17.1.x86_64-linux-gnu-cuda+12.4.tar.gz"
 [[CUDA_Runtime]]
 arch = "aarch64"
 cuda = "12.4"
@@ -398,7 +398,7 @@ os = "linux"
 
     [[CUDA_Runtime.download]]
     sha256 = "f419da629f6a98678ac6d2e5ce2d8e82f140d7846c9b0e96a6b26e4b1a8f00d2"
-    url = "https://github.com/JuliaBinaryWrappers/CUDA_Runtime_jll.jl/releases/download/CUDA_Runtime-v0.17.0+0/CUDA_Runtime.v0.17.0.aarch64-linux-gnu-cuda_platform+jetson-cuda+12.4.tar.gz"
+    url = "https://github.com/JuliaBinaryWrappers/CUDA_Runtime_jll.jl/releases/download/CUDA_Runtime-v0.17.1+0/CUDA_Runtime.v0.17.1.aarch64-linux-gnu-cuda_platform+jetson-cuda+12.4.tar.gz"
 [[CUDA_Runtime]]
 arch = "aarch64"
 cuda = "12.4"
@@ -410,7 +410,7 @@ os = "linux"
 
     [[CUDA_Runtime.download]]
     sha256 = "c74de46797e846b04a127a380172da3868049e82e9134ccdb7f69dc4d60eed9f"
-    url = "https://github.com/JuliaBinaryWrappers/CUDA_Runtime_jll.jl/releases/download/CUDA_Runtime-v0.17.0+0/CUDA_Runtime.v0.17.0.aarch64-linux-gnu-cuda_platform+sbsa-cuda+12.4.tar.gz"
+    url = "https://github.com/JuliaBinaryWrappers/CUDA_Runtime_jll.jl/releases/download/CUDA_Runtime-v0.17.1+0/CUDA_Runtime.v0.17.1.aarch64-linux-gnu-cuda_platform+sbsa-cuda+12.4.tar.gz"
 [[CUDA_Runtime]]
 arch = "x86_64"
 cuda = "12.4"
@@ -420,7 +420,7 @@ os = "windows"
 
     [[CUDA_Runtime.download]]
     sha256 = "7f216949eb3674a14232342270ac4d5039b6747485f5353bfac78ec9b684df84"
-    url = "https://github.com/JuliaBinaryWrappers/CUDA_Runtime_jll.jl/releases/download/CUDA_Runtime-v0.17.0+0/CUDA_Runtime.v0.17.0.x86_64-w64-mingw32-cuda+12.4.tar.gz"
+    url = "https://github.com/JuliaBinaryWrappers/CUDA_Runtime_jll.jl/releases/download/CUDA_Runtime-v0.17.1+0/CUDA_Runtime.v0.17.1.x86_64-w64-mingw32-cuda+12.4.tar.gz"
 [[CUDA_Runtime]]
 arch = "x86_64"
 cuda = "12.5"
@@ -431,7 +431,7 @@ os = "linux"
 
     [[CUDA_Runtime.download]]
     sha256 = "3d85e081972838042151bdd962178adf239c546712cc68b2fdfff8bcbc4ab2ad"
-    url = "https://github.com/JuliaBinaryWrappers/CUDA_Runtime_jll.jl/releases/download/CUDA_Runtime-v0.17.0+0/CUDA_Runtime.v0.17.0.x86_64-linux-gnu-cuda+12.5.tar.gz"
+    url = "https://github.com/JuliaBinaryWrappers/CUDA_Runtime_jll.jl/releases/download/CUDA_Runtime-v0.17.1+0/CUDA_Runtime.v0.17.1.x86_64-linux-gnu-cuda+12.5.tar.gz"
 [[CUDA_Runtime]]
 arch = "aarch64"
 cuda = "12.5"
@@ -443,7 +443,7 @@ os = "linux"
 
     [[CUDA_Runtime.download]]
     sha256 = "2fb2ef236ed6cd668e39d8ba9acd5c0df82d60317d710c57523f07ae0070188d"
-    url = "https://github.com/JuliaBinaryWrappers/CUDA_Runtime_jll.jl/releases/download/CUDA_Runtime-v0.17.0+0/CUDA_Runtime.v0.17.0.aarch64-linux-gnu-cuda_platform+jetson-cuda+12.5.tar.gz"
+    url = "https://github.com/JuliaBinaryWrappers/CUDA_Runtime_jll.jl/releases/download/CUDA_Runtime-v0.17.1+0/CUDA_Runtime.v0.17.1.aarch64-linux-gnu-cuda_platform+jetson-cuda+12.5.tar.gz"
 [[CUDA_Runtime]]
 arch = "aarch64"
 cuda = "12.5"
@@ -455,7 +455,7 @@ os = "linux"
 
     [[CUDA_Runtime.download]]
     sha256 = "95010d2c765a8ee241b20459a85cc844ba3db7d53761623b5ae097518c83ba36"
-    url = "https://github.com/JuliaBinaryWrappers/CUDA_Runtime_jll.jl/releases/download/CUDA_Runtime-v0.17.0+0/CUDA_Runtime.v0.17.0.aarch64-linux-gnu-cuda_platform+sbsa-cuda+12.5.tar.gz"
+    url = "https://github.com/JuliaBinaryWrappers/CUDA_Runtime_jll.jl/releases/download/CUDA_Runtime-v0.17.1+0/CUDA_Runtime.v0.17.1.aarch64-linux-gnu-cuda_platform+sbsa-cuda+12.5.tar.gz"
 [[CUDA_Runtime]]
 arch = "x86_64"
 cuda = "12.5"
@@ -465,7 +465,7 @@ os = "windows"
 
     [[CUDA_Runtime.download]]
     sha256 = "99f732d462e02afc70738c76b3f497619d2c7e6e59638704dc22491e8c07e11a"
-    url = "https://github.com/JuliaBinaryWrappers/CUDA_Runtime_jll.jl/releases/download/CUDA_Runtime-v0.17.0+0/CUDA_Runtime.v0.17.0.x86_64-w64-mingw32-cuda+12.5.tar.gz"
+    url = "https://github.com/JuliaBinaryWrappers/CUDA_Runtime_jll.jl/releases/download/CUDA_Runtime-v0.17.1+0/CUDA_Runtime.v0.17.1.x86_64-w64-mingw32-cuda+12.5.tar.gz"
 [[CUDA_Runtime]]
 arch = "x86_64"
 cuda = "12.6"
@@ -476,7 +476,7 @@ os = "linux"
 
     [[CUDA_Runtime.download]]
     sha256 = "b72b8ec94f9d66ea6a9847a8831162c92941265a52a5c05d5bd3c22d38b3db1d"
-    url = "https://github.com/JuliaBinaryWrappers/CUDA_Runtime_jll.jl/releases/download/CUDA_Runtime-v0.17.0+0/CUDA_Runtime.v0.17.0.x86_64-linux-gnu-cuda+12.6.tar.gz"
+    url = "https://github.com/JuliaBinaryWrappers/CUDA_Runtime_jll.jl/releases/download/CUDA_Runtime-v0.17.1+0/CUDA_Runtime.v0.17.1.x86_64-linux-gnu-cuda+12.6.tar.gz"
 [[CUDA_Runtime]]
 arch = "aarch64"
 cuda = "12.6"
@@ -488,7 +488,7 @@ os = "linux"
 
     [[CUDA_Runtime.download]]
     sha256 = "4b4bfa3d0846bb18580149bb8e9a87695d576f983e8cf765bf25e724b127a602"
-    url = "https://github.com/JuliaBinaryWrappers/CUDA_Runtime_jll.jl/releases/download/CUDA_Runtime-v0.17.0+0/CUDA_Runtime.v0.17.0.aarch64-linux-gnu-cuda_platform+jetson-cuda+12.6.tar.gz"
+    url = "https://github.com/JuliaBinaryWrappers/CUDA_Runtime_jll.jl/releases/download/CUDA_Runtime-v0.17.1+0/CUDA_Runtime.v0.17.1.aarch64-linux-gnu-cuda_platform+jetson-cuda+12.6.tar.gz"
 [[CUDA_Runtime]]
 arch = "aarch64"
 cuda = "12.6"
@@ -500,7 +500,7 @@ os = "linux"
 
     [[CUDA_Runtime.download]]
     sha256 = "d1efd2af7a22cf3b992169ea9f88d955828c1d9e3120e1b1508a24be3f3b23f5"
-    url = "https://github.com/JuliaBinaryWrappers/CUDA_Runtime_jll.jl/releases/download/CUDA_Runtime-v0.17.0+0/CUDA_Runtime.v0.17.0.aarch64-linux-gnu-cuda_platform+sbsa-cuda+12.6.tar.gz"
+    url = "https://github.com/JuliaBinaryWrappers/CUDA_Runtime_jll.jl/releases/download/CUDA_Runtime-v0.17.1+0/CUDA_Runtime.v0.17.1.aarch64-linux-gnu-cuda_platform+sbsa-cuda+12.6.tar.gz"
 [[CUDA_Runtime]]
 arch = "x86_64"
 cuda = "12.6"
@@ -510,7 +510,7 @@ os = "windows"
 
     [[CUDA_Runtime.download]]
     sha256 = "448a5b134f156ad0897c9c8c4b6772bde6630d734948692f09833149ab58d668"
-    url = "https://github.com/JuliaBinaryWrappers/CUDA_Runtime_jll.jl/releases/download/CUDA_Runtime-v0.17.0+0/CUDA_Runtime.v0.17.0.x86_64-w64-mingw32-cuda+12.6.tar.gz"
+    url = "https://github.com/JuliaBinaryWrappers/CUDA_Runtime_jll.jl/releases/download/CUDA_Runtime-v0.17.1+0/CUDA_Runtime.v0.17.1.x86_64-w64-mingw32-cuda+12.6.tar.gz"
 [[CUDA_Runtime]]
 arch = "x86_64"
 cuda = "12.8"
@@ -521,7 +521,7 @@ os = "linux"
 
     [[CUDA_Runtime.download]]
     sha256 = "8ae3dadbcf5b9e44d598b33056993eb1706190b89578b869f8aedb909ec56fb7"
-    url = "https://github.com/JuliaBinaryWrappers/CUDA_Runtime_jll.jl/releases/download/CUDA_Runtime-v0.17.0+0/CUDA_Runtime.v0.17.0.x86_64-linux-gnu-cuda+12.8.tar.gz"
+    url = "https://github.com/JuliaBinaryWrappers/CUDA_Runtime_jll.jl/releases/download/CUDA_Runtime-v0.17.1+0/CUDA_Runtime.v0.17.1.x86_64-linux-gnu-cuda+12.8.tar.gz"
 [[CUDA_Runtime]]
 arch = "aarch64"
 cuda = "12.8"
@@ -533,7 +533,7 @@ os = "linux"
 
     [[CUDA_Runtime.download]]
     sha256 = "0a15c7fb4b63a2094e292f1373d2ce216cf95c3d6743d4c7700de52490d4436f"
-    url = "https://github.com/JuliaBinaryWrappers/CUDA_Runtime_jll.jl/releases/download/CUDA_Runtime-v0.17.0+0/CUDA_Runtime.v0.17.0.aarch64-linux-gnu-cuda_platform+jetson-cuda+12.8.tar.gz"
+    url = "https://github.com/JuliaBinaryWrappers/CUDA_Runtime_jll.jl/releases/download/CUDA_Runtime-v0.17.1+0/CUDA_Runtime.v0.17.1.aarch64-linux-gnu-cuda_platform+jetson-cuda+12.8.tar.gz"
 [[CUDA_Runtime]]
 arch = "aarch64"
 cuda = "12.8"
@@ -545,7 +545,7 @@ os = "linux"
 
     [[CUDA_Runtime.download]]
     sha256 = "e040c9c6916b6b39c22f0fc44f3c825b842293491673f318e497a5a1c5c68c15"
-    url = "https://github.com/JuliaBinaryWrappers/CUDA_Runtime_jll.jl/releases/download/CUDA_Runtime-v0.17.0+0/CUDA_Runtime.v0.17.0.aarch64-linux-gnu-cuda_platform+sbsa-cuda+12.8.tar.gz"
+    url = "https://github.com/JuliaBinaryWrappers/CUDA_Runtime_jll.jl/releases/download/CUDA_Runtime-v0.17.1+0/CUDA_Runtime.v0.17.1.aarch64-linux-gnu-cuda_platform+sbsa-cuda+12.8.tar.gz"
 [[CUDA_Runtime]]
 arch = "x86_64"
 cuda = "12.8"
@@ -555,49 +555,49 @@ os = "windows"
 
     [[CUDA_Runtime.download]]
     sha256 = "aae60604eaf2533f9a95b458d24ca66365f3ca5013d654e8db697124d85c6000"
-    url = "https://github.com/JuliaBinaryWrappers/CUDA_Runtime_jll.jl/releases/download/CUDA_Runtime-v0.17.0+0/CUDA_Runtime.v0.17.0.x86_64-w64-mingw32-cuda+12.8.tar.gz"
+    url = "https://github.com/JuliaBinaryWrappers/CUDA_Runtime_jll.jl/releases/download/CUDA_Runtime-v0.17.1+0/CUDA_Runtime.v0.17.1.x86_64-w64-mingw32-cuda+12.8.tar.gz"
 [[CUDA_Runtime]]
 arch = "x86_64"
 cuda = "12.9"
-git-tree-sha1 = "9c86e4178f4a634026b1a27dfc683b3cb5f87aef"
+git-tree-sha1 = "70f96a1658fa57e8991861b919a30a208dbc73b6"
 lazy = true
 libc = "glibc"
 os = "linux"
 
     [[CUDA_Runtime.download]]
-    sha256 = "96f29b5f78f195ed232ff7ad77eda0e4ed292d0f82538aa7b84f5a9e320a1d17"
-    url = "https://github.com/JuliaBinaryWrappers/CUDA_Runtime_jll.jl/releases/download/CUDA_Runtime-v0.17.0+0/CUDA_Runtime.v0.17.0.x86_64-linux-gnu-cuda+12.9.tar.gz"
+    sha256 = "35e1d3232b4615417da0926a43024fdb6496f492ee0cbb5613d28d1f6fb713a8"
+    url = "https://github.com/JuliaBinaryWrappers/CUDA_Runtime_jll.jl/releases/download/CUDA_Runtime-v0.17.1+0/CUDA_Runtime.v0.17.1.x86_64-linux-gnu-cuda+12.9.tar.gz"
 [[CUDA_Runtime]]
 arch = "aarch64"
 cuda = "12.9"
 cuda_platform = "jetson"
-git-tree-sha1 = "13b74f6b2da589db8dc0bdd645b890a8d7f6fafb"
+git-tree-sha1 = "6290c21ee780519600e70c9c7066700ee9e8a699"
 lazy = true
 libc = "glibc"
 os = "linux"
 
     [[CUDA_Runtime.download]]
-    sha256 = "8dfc301f6c67c19558074f4bfe73f98fc0d36aedb226f3b480dcf7b4500f02c7"
-    url = "https://github.com/JuliaBinaryWrappers/CUDA_Runtime_jll.jl/releases/download/CUDA_Runtime-v0.17.0+0/CUDA_Runtime.v0.17.0.aarch64-linux-gnu-cuda_platform+jetson-cuda+12.9.tar.gz"
+    sha256 = "c41cc5aa89626dc655e0ddab515e16748ada9fceb327c49e9906df5192c92c80"
+    url = "https://github.com/JuliaBinaryWrappers/CUDA_Runtime_jll.jl/releases/download/CUDA_Runtime-v0.17.1+0/CUDA_Runtime.v0.17.1.aarch64-linux-gnu-cuda_platform+jetson-cuda+12.9.tar.gz"
 [[CUDA_Runtime]]
 arch = "aarch64"
 cuda = "12.9"
 cuda_platform = "sbsa"
-git-tree-sha1 = "2c7dbdf50bba8941e11c4a96301b4af34e8461ae"
+git-tree-sha1 = "2db711f5a26f9ae49c262daa8874177a1471ccc0"
 lazy = true
 libc = "glibc"
 os = "linux"
 
     [[CUDA_Runtime.download]]
-    sha256 = "4cac2f50e3ab0ab81d789a7d0d2e2775f355c3ca18d606e4dedd4b85398ce37d"
-    url = "https://github.com/JuliaBinaryWrappers/CUDA_Runtime_jll.jl/releases/download/CUDA_Runtime-v0.17.0+0/CUDA_Runtime.v0.17.0.aarch64-linux-gnu-cuda_platform+sbsa-cuda+12.9.tar.gz"
+    sha256 = "2eca24a283c94c2f7eb3544fc4611914c692d8e269d21b12c302d4b544af912e"
+    url = "https://github.com/JuliaBinaryWrappers/CUDA_Runtime_jll.jl/releases/download/CUDA_Runtime-v0.17.1+0/CUDA_Runtime.v0.17.1.aarch64-linux-gnu-cuda_platform+sbsa-cuda+12.9.tar.gz"
 [[CUDA_Runtime]]
 arch = "x86_64"
 cuda = "12.9"
-git-tree-sha1 = "738175cec18a88343c6fbb7fc1510249fb0d39c9"
+git-tree-sha1 = "bf595cf70ab7bfceb2825898163befd1910c7efd"
 lazy = true
 os = "windows"
 
     [[CUDA_Runtime.download]]
-    sha256 = "9c504fa6301a8a9abd69841f60e98aaf4d67a3f5c5aea85fba942f9e43898037"
-    url = "https://github.com/JuliaBinaryWrappers/CUDA_Runtime_jll.jl/releases/download/CUDA_Runtime-v0.17.0+0/CUDA_Runtime.v0.17.0.x86_64-w64-mingw32-cuda+12.9.tar.gz"
+    sha256 = "0ab4484bdc0fde5182491aab8ff1e3f022fadf89fa3f11b62f466af875db7d75"
+    url = "https://github.com/JuliaBinaryWrappers/CUDA_Runtime_jll.jl/releases/download/CUDA_Runtime-v0.17.1+0/CUDA_Runtime.v0.17.1.x86_64-w64-mingw32-cuda+12.9.tar.gz"
