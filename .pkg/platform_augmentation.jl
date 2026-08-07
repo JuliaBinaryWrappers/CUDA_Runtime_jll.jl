@@ -265,6 +265,10 @@ function cuda_toolkit_tag()
             return thisminor(toolkit) == thisminor(cuda_version_override)
         end
 
+        # never auto-select an EA/preview toolkit; those have to be requested explicitly
+        # through the "version" preference (handled by the early return above).
+        toolkit in cuda_prerelease_toolkits && return false
+
         # enhanced compatibility
         #
         # "From CUDA 11 onwards, applications compiled with a CUDA Toolkit release
@@ -362,4 +366,5 @@ function augment_platform!(platform::Platform)
     return platform
 end
 
-const cuda_toolkits = VersionNumber[v"10.2.89", v"11.4.4", v"11.5.2", v"11.6.2", v"11.7.1", v"11.8.0", v"12.0.1", v"12.1.1", v"12.2.2", v"12.3.2", v"12.4.1", v"12.5.1", v"12.6.3", v"12.8.1", v"12.9.1", v"13.0.2", v"13.1.1", v"13.2.1", v"13.3.1"]
+const cuda_toolkits = VersionNumber[v"10.2.89", v"11.4.4", v"11.5.2", v"11.6.2", v"11.7.1", v"11.8.0", v"12.0.1", v"12.1.1", v"12.2.2", v"12.3.2", v"12.4.1", v"12.5.1", v"12.6.3", v"12.8.1", v"12.9.1", v"13.0.2", v"13.1.1", v"13.2.1", v"13.3.1", v"13.4.0"]
+const cuda_prerelease_toolkits = VersionNumber[v"13.4.0"]
