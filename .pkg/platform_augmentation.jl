@@ -1,13 +1,18 @@
+const CUDA_jll_uuid = Base.UUID("76a88914-d11a-5bdc-97e0-2f5a05c973a2")
+# CUDA toolkit selection logic, shared between the platform augmentation blocks of
+# CUDA_Runtime_jll and CUDA_Compiler_jll. The including build recipe must define
+# `CUDA_jll_uuid`, append `cuda_toolkits` and `cuda_prerelease_toolkits`, and append an
+# `augment_platform!` implementation.
+
 using Base.BinaryPlatforms
 
 using Base: thismajor, thisminor
 
 using Libdl
 
-const CUDA_Runtime_jll_uuid = Base.UUID("76a88914-d11a-5bdc-97e0-2f5a05c973a2")
-const preferences = Base.get_preferences(CUDA_Runtime_jll_uuid)
-Base.record_compiletime_preference(CUDA_Runtime_jll_uuid, "version")
-Base.record_compiletime_preference(CUDA_Runtime_jll_uuid, "local")
+const preferences = Base.get_preferences(CUDA_jll_uuid)
+Base.record_compiletime_preference(CUDA_jll_uuid, "version")
+Base.record_compiletime_preference(CUDA_jll_uuid, "local")
 const local_preference = if haskey(preferences, "local")
     if isa(preferences["local"], Bool)
         preferences["local"]
@@ -342,6 +347,12 @@ function is_tegra()
     return false
 end
 
+const cuda_toolkits = VersionNumber[v"10.2.89", v"11.4.4", v"11.5.2", v"11.6.2", v"11.7.1", v"11.8.0", v"12.0.1", v"12.1.1", v"12.2.2", v"12.3.2", v"12.4.1", v"12.5.1", v"12.6.3", v"12.8.1", v"12.9.1", v"13.0.2", v"13.1.1", v"13.2.1", v"13.3.1", v"13.4.0"]
+const cuda_prerelease_toolkits = VersionNumber[v"13.4.0"]
+# NOTE: this file is preceded by `toolkit_selection.jl` (shared with CUDA_Compiler_jll),
+#       which provides `cuda_toolkit_tag()`, `cuda_comparison_strategy`,
+#       `local_preference`, and `is_tegra()`.
+
 function augment_platform!(platform::Platform)
     if !haskey(platform, "cuda")
         platform["cuda"] = something(cuda_toolkit_tag(), "none")
@@ -365,6 +376,3 @@ function augment_platform!(platform::Platform)
 
     return platform
 end
-
-const cuda_toolkits = VersionNumber[v"10.2.89", v"11.4.4", v"11.5.2", v"11.6.2", v"11.7.1", v"11.8.0", v"12.0.1", v"12.1.1", v"12.2.2", v"12.3.2", v"12.4.1", v"12.5.1", v"12.6.3", v"12.8.1", v"12.9.1", v"13.0.2", v"13.1.1", v"13.2.1", v"13.3.1", v"13.4.0"]
-const cuda_prerelease_toolkits = VersionNumber[v"13.4.0"]
