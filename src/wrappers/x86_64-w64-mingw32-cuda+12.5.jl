@@ -3,6 +3,7 @@ export libcublas, libcublasLt, libcudart, libcufft, libcupti, libcurand, libcuso
 
 using CUDA_Driver_jll
 using CUDA_Compiler_jll
+using MSVCRuntime_jll
 JLLWrappers.@generate_wrapper_header("CUDA_Runtime")
 JLLWrappers.@declare_library_product(libcublas, "cublas64_12.dll")
 JLLWrappers.@declare_library_product(libcublasLt, "cublasLt64_12.dll")
@@ -16,7 +17,7 @@ JLLWrappers.@declare_library_product(libcusparse, "cusparse64_12.dll")
 JLLWrappers.@declare_library_product(libnvperf_host, "nvperf_host.dll")
 JLLWrappers.@declare_library_product(libnvperf_target, "nvperf_target.dll")
 function __init__()
-    JLLWrappers.@generate_init_header(CUDA_Driver_jll, CUDA_Compiler_jll)
+    JLLWrappers.@generate_init_header(CUDA_Driver_jll, CUDA_Compiler_jll, MSVCRuntime_jll)
     JLLWrappers.@init_library_product(
         libcublas,
         "bin\\cublas64_12.dll",
