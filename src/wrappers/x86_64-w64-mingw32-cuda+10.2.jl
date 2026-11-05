@@ -4,32 +4,20 @@ export libcublas, libcublasLt, libcudart, libcufft, libcupti, libcurand, libcuso
 using CUDA_Driver_jll
 using MSVCRuntime_jll
 JLLWrappers.@generate_wrapper_header("CUDA_Runtime")
-JLLWrappers.@declare_library_product(libcublas, "cublas64_10.dll")
-JLLWrappers.@declare_library_product(libcublasLt, "cublasLt64_10.dll")
 JLLWrappers.@declare_library_product(libcudart, "cudart64_102.dll")
 JLLWrappers.@declare_library_product(libcufft, "cufft64_10.dll")
-JLLWrappers.@declare_library_product(libcupti, "cupti64_102.dll")
-JLLWrappers.@declare_library_product(libcurand, "curand64_10.dll")
-JLLWrappers.@declare_library_product(libcusolver, "cusolver64_10.dll")
+JLLWrappers.@declare_library_product(libcublasLt, "cublasLt64_10.dll")
+JLLWrappers.@declare_library_product(libcublas, "cublas64_10.dll")
 JLLWrappers.@declare_library_product(libcusparse, "cusparse64_10.dll")
+JLLWrappers.@declare_library_product(libcusolver, "cusolver64_10.dll")
+JLLWrappers.@declare_library_product(libcurand, "curand64_10.dll")
+JLLWrappers.@declare_library_product(libcupti, "cupti64_102.dll")
 JLLWrappers.@declare_library_product(libnvperf_host, "nvperf_host.dll")
 JLLWrappers.@declare_library_product(libnvperf_target, "nvperf_target.dll")
 JLLWrappers.@declare_library_product(libnvrtc, "nvrtc64_102_0.dll")
 JLLWrappers.@declare_library_product(libnvrtc_builtins, "nvrtc-builtins64_102.dll")
 function __init__()
     JLLWrappers.@generate_init_header(CUDA_Driver_jll, MSVCRuntime_jll)
-    JLLWrappers.@init_library_product(
-        libcublas,
-        "bin\\cublas64_10.dll",
-        RTLD_LAZY | RTLD_DEEPBIND,
-    )
-
-    JLLWrappers.@init_library_product(
-        libcublasLt,
-        "bin\\cublasLt64_10.dll",
-        RTLD_LAZY | RTLD_DEEPBIND,
-    )
-
     JLLWrappers.@init_library_product(
         libcudart,
         "bin\\cudart64_102.dll",
@@ -43,14 +31,20 @@ function __init__()
     )
 
     JLLWrappers.@init_library_product(
-        libcupti,
-        "bin\\cupti64_102.dll",
+        libcublasLt,
+        "bin\\cublasLt64_10.dll",
         RTLD_LAZY | RTLD_DEEPBIND,
     )
 
     JLLWrappers.@init_library_product(
-        libcurand,
-        "bin\\curand64_10.dll",
+        libcublas,
+        "bin\\cublas64_10.dll",
+        RTLD_LAZY | RTLD_DEEPBIND,
+    )
+
+    JLLWrappers.@init_library_product(
+        libcusparse,
+        "bin\\cusparse64_10.dll",
         RTLD_LAZY | RTLD_DEEPBIND,
     )
 
@@ -61,8 +55,14 @@ function __init__()
     )
 
     JLLWrappers.@init_library_product(
-        libcusparse,
-        "bin\\cusparse64_10.dll",
+        libcurand,
+        "bin\\curand64_10.dll",
+        RTLD_LAZY | RTLD_DEEPBIND,
+    )
+
+    JLLWrappers.@init_library_product(
+        libcupti,
+        "bin\\cupti64_102.dll",
         RTLD_LAZY | RTLD_DEEPBIND,
     )
 

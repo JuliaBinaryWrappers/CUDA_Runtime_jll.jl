@@ -1,5 +1,37 @@
 [[CUDA_Runtime]]
 arch = "x86_64"
+cuda = "13.5"
+git-tree-sha1 = "780ec211bcd221cc8898886a73ec9a5f70d361b8"
+lazy = true
+libc = "glibc"
+os = "linux"
+
+    [[CUDA_Runtime.download]]
+    sha256 = "3f387f3265696f31e3824ad38f562347d0895d9ce8ed23b40dada398640cf126"
+    url = "https://github.com/JuliaBinaryWrappers/CUDA_Runtime_jll.jl/releases/download/CUDA_Runtime-v0.26.0+0/CUDA_Runtime.v0.26.0.x86_64-linux-gnu-cuda+13.5.tar.gz"
+[[CUDA_Runtime]]
+arch = "aarch64"
+cuda = "13.5"
+git-tree-sha1 = "69e60f3a01d4116e214bc01ef04e611c3614f3a4"
+lazy = true
+libc = "glibc"
+os = "linux"
+
+    [[CUDA_Runtime.download]]
+    sha256 = "6df7a8865af9c658fca3d8ea61a4a305d9619ed08b06d148ccbfec71e760d612"
+    url = "https://github.com/JuliaBinaryWrappers/CUDA_Runtime_jll.jl/releases/download/CUDA_Runtime-v0.26.0+0/CUDA_Runtime.v0.26.0.aarch64-linux-gnu-cuda+13.5.tar.gz"
+[[CUDA_Runtime]]
+arch = "x86_64"
+cuda = "13.5"
+git-tree-sha1 = "a3fef02c35f26610d06e714eafba79db831042fc"
+lazy = true
+os = "windows"
+
+    [[CUDA_Runtime.download]]
+    sha256 = "103a7b82108173a082d16cba7f5f5b6736f276a61bf15918e478add3c543b285"
+    url = "https://github.com/JuliaBinaryWrappers/CUDA_Runtime_jll.jl/releases/download/CUDA_Runtime-v0.26.0+0/CUDA_Runtime.v0.26.0.x86_64-w64-mingw32-cuda+13.5.tar.gz"
+[[CUDA_Runtime]]
+arch = "x86_64"
 cuda = "13.4"
 git-tree-sha1 = "b7bddf2042616bb5a8ee0a05b7eb971f5ddeedfe"
 lazy = true

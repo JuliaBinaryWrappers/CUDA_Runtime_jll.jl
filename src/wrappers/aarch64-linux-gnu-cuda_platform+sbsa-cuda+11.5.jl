@@ -4,31 +4,19 @@ export libcublas, libcublasLt, libcudart, libcufft, libcupti, libcurand, libcuso
 using CUDA_Driver_jll
 using CUDA_Compiler_jll
 JLLWrappers.@generate_wrapper_header("CUDA_Runtime")
-JLLWrappers.@declare_library_product(libcublas, "libcublas.so.11")
-JLLWrappers.@declare_library_product(libcublasLt, "libcublasLt.so.11")
 JLLWrappers.@declare_library_product(libcudart, "libcudart.so.11.0")
 JLLWrappers.@declare_library_product(libcufft, "libcufft.so.10")
-JLLWrappers.@declare_library_product(libcupti, "libcupti.so.11.5")
-JLLWrappers.@declare_library_product(libcurand, "libcurand.so.10")
+JLLWrappers.@declare_library_product(libcublas, "libcublas.so.11")
+JLLWrappers.@declare_library_product(libcublasLt, "libcublasLt.so.11")
+JLLWrappers.@declare_library_product(libcusparse, "libcusparse.so.11")
 JLLWrappers.@declare_library_product(libcusolver, "libcusolver.so.11")
 JLLWrappers.@declare_library_product(libcusolverMg, "libcusolverMg.so.11")
-JLLWrappers.@declare_library_product(libcusparse, "libcusparse.so.11")
+JLLWrappers.@declare_library_product(libcurand, "libcurand.so.10")
+JLLWrappers.@declare_library_product(libcupti, "libcupti.so.11.5")
 JLLWrappers.@declare_library_product(libnvperf_host, "libnvperf_host.so")
 JLLWrappers.@declare_library_product(libnvperf_target, "libnvperf_target.so")
 function __init__()
     JLLWrappers.@generate_init_header(CUDA_Driver_jll, CUDA_Compiler_jll)
-    JLLWrappers.@init_library_product(
-        libcublas,
-        "lib/libcublas.so",
-        RTLD_LAZY | RTLD_DEEPBIND,
-    )
-
-    JLLWrappers.@init_library_product(
-        libcublasLt,
-        "lib/libcublasLt.so",
-        RTLD_LAZY | RTLD_DEEPBIND,
-    )
-
     JLLWrappers.@init_library_product(
         libcudart,
         "lib/libcudart.so",
@@ -42,14 +30,20 @@ function __init__()
     )
 
     JLLWrappers.@init_library_product(
-        libcupti,
-        "lib/libcupti.so",
+        libcublas,
+        "lib/libcublas.so",
         RTLD_LAZY | RTLD_DEEPBIND,
     )
 
     JLLWrappers.@init_library_product(
-        libcurand,
-        "lib/libcurand.so",
+        libcublasLt,
+        "lib/libcublasLt.so",
+        RTLD_LAZY | RTLD_DEEPBIND,
+    )
+
+    JLLWrappers.@init_library_product(
+        libcusparse,
+        "lib/libcusparse.so",
         RTLD_LAZY | RTLD_DEEPBIND,
     )
 
@@ -66,8 +60,14 @@ function __init__()
     )
 
     JLLWrappers.@init_library_product(
-        libcusparse,
-        "lib/libcusparse.so",
+        libcurand,
+        "lib/libcurand.so",
+        RTLD_LAZY | RTLD_DEEPBIND,
+    )
+
+    JLLWrappers.@init_library_product(
+        libcupti,
+        "lib/libcupti.so",
         RTLD_LAZY | RTLD_DEEPBIND,
     )
 
