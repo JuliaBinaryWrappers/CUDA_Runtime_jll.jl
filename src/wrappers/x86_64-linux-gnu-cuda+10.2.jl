@@ -2,6 +2,7 @@
 export libcublas, libcublasLt, libcudart, libcufft, libcupti, libcurand, libcusolver, libcusparse, libnvperf_host, libnvperf_target, libnvrtc, libnvrtc_builtins
 
 using CUDA_Driver_jll
+using CUDA_Compiler_jll
 JLLWrappers.@generate_wrapper_header("CUDA_Runtime")
 JLLWrappers.@declare_library_product(libcudart, "libcudart.so.10.2")
 JLLWrappers.@declare_library_product(libcufft, "libcufft.so.10")
@@ -16,7 +17,7 @@ JLLWrappers.@declare_library_product(libnvperf_target, "libnvperf_target.so")
 JLLWrappers.@declare_library_product(libnvrtc, "libnvrtc.so.10.2")
 JLLWrappers.@declare_library_product(libnvrtc_builtins, "libnvrtc-builtins.so.10.2")
 function __init__()
-    JLLWrappers.@generate_init_header(CUDA_Driver_jll)
+    JLLWrappers.@generate_init_header(CUDA_Driver_jll, CUDA_Compiler_jll)
     JLLWrappers.@init_library_product(
         libcudart,
         "lib/libcudart.so",
