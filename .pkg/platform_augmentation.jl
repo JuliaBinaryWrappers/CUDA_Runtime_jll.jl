@@ -40,7 +40,12 @@ const preferences = let
     something(selected, Dict{String,Any}())
 end
 
-const local_preference = if haskey(preferences, "local")
+# `version = "none"` disables CUDA, as on a host without a driver, local toolkits included
+const cuda_disabled = get(preferences, "version", nothing) == "none"
+
+const local_preference = if cuda_disabled
+    false
+elseif haskey(preferences, "local")
     if isa(preferences["local"], Bool)
         preferences["local"]
     elseif isa(preferences["local"], String)
@@ -83,7 +88,9 @@ function parse_version_preference(key)
         missing
     end
 end
-const version_preference = if haskey(preferences, "version") && preferences["version"] == "local"
+const version_preference = if cuda_disabled
+    missing
+elseif haskey(preferences, "version") && preferences["version"] == "local"
     # legacy support for CUDA.jl's old "version" preference format.
     # in this case, an "actual_version" preference is required.
     parse_version_preference("actual_version")
@@ -147,6 +154,24 @@ function get_runtime_version()
     cudaRuntimeGetVersion(runtime_handle)
 end
 
+# query the version of a loaded CUDA driver, returning `nothing` on failure
+function get_driver_version(driver_handle)
+    version_fn = Libdl.dlsym(driver_handle, "cuDriverGetVersion"; throw_error=false)
+    if version_fn === nothing
+        @debug "Driver library seems invalid (does not contain 'cuDriverGetVersion')"
+        return nothing
+    end
+    version_ref = Ref{Cint}()
+    status = ccall(version_fn, Cint, (Ptr{Cint},), version_ref)
+    if status != 0
+        @debug "Call to 'cuDriverGetVersion' failed with status $status"
+        return nothing
+    end
+    major, ver = divrem(version_ref[], 1000)
+    minor, patch = divrem(ver, 10)
+    return VersionNumber(major, minor, patch)
+end
+
 # query the CUDA driver, returning `nothing` on failure, or a tuple
 # `(driver_version, device_capabilities)`.
 #
@@ -173,6 +198,9 @@ function get_driver_info()
         return nothing
     end
 
+    version = get_driver_version(driver_handle)
+    version === nothing && return nothing
+
     # minimal API call wrappers we need
     function lookup(name)
         function_handle = Libdl.dlsym(driver_handle, name; throw_error=false)
@@ -181,17 +209,6 @@ function get_driver_info()
         end
         return function_handle
     end
-    version_fn = lookup("cuDriverGetVersion")
-    version_fn === nothing && return nothing
-    version_ref = Ref{Cint}()
-    status = ccall(version_fn, Cint, (Ptr{Cint},), version_ref)
-    if status != 0
-        @debug "Call to 'cuDriverGetVersion' failed with status $status"
-        return nothing
-    end
-    major, ver = divrem(version_ref[], 1000)
-    minor, patch = divrem(ver, 10)
-    version = VersionNumber(major, minor, patch)
 
     # the device capabilities let us narrow the selection down to toolkits that support
     # the user's hardware, but they are only a refinement: the driver version alone
@@ -242,14 +259,8 @@ function get_driver_info()
         end
     end
 
-    # invalidate the precompilation cache when the driver changes.
-    #
-    # NOTE: when CUDA_Driver_jll adopted the bundled forwards-compatible driver, this only
-    # covers that driver; the system driver, on which CUDA_Driver_jll's decision depends,
-    # cannot be located from here (it shares its SONAME with the loaded compat driver, so
-    # dlopen'ing it by name just returns the latter). A system driver upgrade then does
-    # not invalidate the baked selection; the `compat` preference recorded by
-    # CUDA_Driver_jll does at least cover the user changing their mind.
+    # invalidate the precompilation cache when the driver changes. with the compat driver
+    # loaded, CUDA_Driver_jll's `__init__` registers the system driver.
     driver_path = Libdl.dlpath(driver_handle)
     @debug "Adding include dependency on $driver_path"
     Base.include_dependency(driver_path)
@@ -314,6 +325,31 @@ const jetson_cap_db = Dict{VersionNumber, NTuple{2, VersionNumber}}(
     v"7.2"   => (v"9.2",   v"12.5"),
 )
 
+# the toolkits from `toolkits` that a driver can run, excluding those in
+# `prerelease_toolkits`, which are never selected automatically.
+function driver_compatible_toolkits(driver_version::VersionNumber,
+                                    toolkits::Vector{VersionNumber},
+                                    prerelease_toolkits::Vector{VersionNumber})
+    # "[...] applications built against any of the older CUDA Toolkits always continued
+    #  to function on newer drivers due to binary backward compatibility"
+    filter(toolkits) do toolkit
+        # never auto-select an EA/preview toolkit; those have to be requested explicitly
+        # through the "version" preference.
+        toolkit in prerelease_toolkits && return false
+
+        # enhanced compatibility
+        #
+        # "From CUDA 11 onwards, applications compiled with a CUDA Toolkit release
+        #  from within a CUDA major release family can run, with limited feature-set,
+        #  on systems having at least the minimum required driver version"
+        if driver_version >= v"11"
+            thismajor(toolkit) <= thismajor(driver_version)
+        else
+            thisminor(toolkit) <= thisminor(driver_version)
+        end
+    end
+end
+
 # select the best CUDA toolkit from `toolkits` (an ascending list of candidate versions)
 # for the driver and its devices, or `nothing` if the driver cannot be queried or no
 # candidate is compatible. Toolkits listed in `prerelease_toolkits` are never selected
@@ -333,24 +369,8 @@ function select_cuda_toolkit(toolkits::Vector{VersionNumber},
         @debug "CUDA device compute capabilities: $(join(device_capabilities, ", "))"
     end
 
-    # "[...] applications built against any of the older CUDA Toolkits always continued
-    #  to function on newer drivers due to binary backward compatibility"
-    compatible_toolkits = filter(toolkits) do toolkit
-        # never auto-select an EA/preview toolkit; those have to be requested explicitly
-        # through the "version" preference.
-        toolkit in prerelease_toolkits && return false
-
-        # enhanced compatibility
-        #
-        # "From CUDA 11 onwards, applications compiled with a CUDA Toolkit release
-        #  from within a CUDA major release family can run, with limited feature-set,
-        #  on systems having at least the minimum required driver version"
-        if cuda_driver_version >= v"11"
-            thismajor(toolkit) <= thismajor(cuda_driver_version)
-        else
-            thisminor(toolkit) <= thisminor(cuda_driver_version)
-        end
-    end
+    compatible_toolkits = driver_compatible_toolkits(cuda_driver_version, toolkits,
+                                                     prerelease_toolkits)
     if isempty(compatible_toolkits)
         @error "CUDA driver $(cuda_driver_version) is not compatible with any supported CUDA toolkit ($(join(toolkits, ", ", " or ")))"
         return nothing
@@ -393,6 +413,11 @@ end
 # returns the value for the "cuda" tag we should use in the platform ("$MAJOR.$MINOR")
 # or nothing if no compatible CUDA toolkit was found.
 function cuda_toolkit_tag()
+    if cuda_disabled
+        @debug "CUDA disabled by preference"
+        return nothing
+    end
+
     # check if the user requested a specific version
     if version_preference !== missing
         @debug "CUDA version override: $version_preference"
@@ -499,4 +524,109 @@ function augment_platform!(platform::Platform)
     end
 
     return platform
+end
+
+# For JLLs whose builds follow our toolkit selection: the platform augmentation block they
+# embed (`CUDA.augment` in Yggdrasil) calls this, so that a release of this package fixes
+# the selection logic for all of them without rebuilding them. Keep the signature stable.
+#
+# Copies our selection into `platform`. If `artifacts_toml` has no build for it and the
+# platform's other tags, which must be set already, selects the `cuda=none` build instead.
+# A `cuda` tag that is already set is an explicit request, and is kept as is.
+import Artifacts
+
+function augment_dependent!(platform::Platform, artifacts_toml::String)
+    explicit = haskey(platform, "cuda")
+    if !explicit
+        for tag in ("cuda", "cuda_local", "cuda_platform")
+            haskey(host_platform, tag) && (platform[tag] = host_platform[tag])
+        end
+    end
+    BinaryPlatforms.set_compare_strategy!(platform, "cuda", dependent_comparison_strategy)
+    explicit && return platform
+
+    if platform["cuda"] != "none" && isfile(artifacts_toml) &&
+       isempty(Artifacts.select_downloadable_artifacts(artifacts_toml; platform,
+                                                       include_lazy=true))
+        platform["cuda"] = "none"
+    end
+    return platform
+end
+
+# a dependent's `cuda=X.Y` build needs our toolkit X.Y, or, from CUDA 11, a newer minor
+# of the same major
+function dependent_comparison_strategy(a::String, b::String, a_requested::Bool, b_requested::Bool)
+    av = tryparse(VersionNumber, a)
+    bv = tryparse(VersionNumber, b)
+    (av === nothing || bv === nothing) && return a == b
+
+    # CUDA builds need our toolkit, which a local toolkit replaces
+    local_preference === true && return false
+
+    a_requested && b_requested && return thisminor(av) == thisminor(bv)
+    build, host = a_requested ? (bv, av) : (av, bv)
+    if host >= v"11"
+        build.major == host.major && thisminor(build) <= thisminor(host)
+    else
+        thisminor(build) == thisminor(host)
+    end
+end
+
+# The toolkit selection is baked into the precompilation cache, which only depends on the
+# driver if one could be loaded. A cache made without one, e.g. on an HPC login node, thus
+# stays in use on GPU nodes sharing the depot. Recompiling there would make both kinds of
+# host recompile against each other, so warn instead. This is a submodule because the
+# package has no `__init__` when no artifact was selected.
+module SelectionCheck
+
+using Libdl
+using Base.BinaryPlatforms: Platform, tags
+
+function check(jll)
+    # only when loaded, not while precompiling dependents
+    Base.JLOptions().incremental == 0 || return
+    # these preferences make the selection independent of the driver
+    (jll.cuda_disabled || jll.version_preference !== missing || jll.local_preference === true) && return
+    tags(jll.host_platform::Platform)["cuda"] == "none" || return
+
+    handle = Libdl.dlopen_e(jll.CUDA_Driver_jll.libcuda::String)
+    handle == C_NULL && return
+    driver = jll.get_driver_version(handle)
+    driver === nothing && return
+    toolkits = jll.driver_compatible_toolkits(driver, jll.cuda_toolkits,
+                                              jll.cuda_prerelease_toolkits)
+    isempty(toolkits) && return
+    version = "$(last(toolkits).major).$(last(toolkits).minor)"
+
+    origin = get(Base.pkgorigins, Base.PkgId(jll), nothing)
+    compiled = if origin === nothing || origin.cachepath === nothing
+        "the `compiled` directory of your depot"
+    else
+        dirname(dirname(origin.cachepath))
+    end
+    @warn """CUDA_Runtime_jll was precompiled without an NVIDIA driver, but this system has one.
+             Packages that depend on it use their CPU builds, or no CUDA at all.
+             This happens when systems with and without a driver share a depot. To select
+             the same toolkit on all of them, call e.g. `CUDA.set_runtime_version!(v"$version")`,
+             or set `version = "$version"` for CUDA_Runtime_jll and CUDA_Compiler_jll in your
+             LocalPreferences.toml; for a whole cluster, see
+             https://cuda.juliagpu.org/stable/installation/overview/#Shared-depots.
+             Or, to select one for this system, delete the CUDA_Runtime_jll and
+             CUDA_Compiler_jll directories in $compiled and restart Julia."""
+end
+
+function __init__()
+    jll = parentmodule(@__MODULE__)
+    # Pkg's artifact selection includes this file into `Main` of a separate process
+    isdefined(jll, :host_platform) || return
+    try
+        check(jll)
+    catch err
+        @debug "Could not check the CUDA toolkit selection" exception=(err, catch_backtrace())
+    end
+end
+
+# JLLs run interpreted; keep the check from compiling at load time
+precompile(check, (Module,))
+
 end
